@@ -1,4 +1,4 @@
-# frontend
+# Hotel Reservation System
 
 ## Project setup
 Go into both folders and run:
