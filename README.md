@@ -1,24 +1,24 @@
 # frontend
 
 ## Project setup
+Go into both folders and run:
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Running
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Go into backend and:
 
-### Lints and fixes files
+run both backend and frontend:
 ```
-npm run lint
+npm run dev
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+run just frontend:
+```
+npm run frontend
+```
+run just backend:
+```
+npm run backend
+```
