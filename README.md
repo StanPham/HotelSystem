@@ -5,6 +5,7 @@ Go into both folders and run:
 ```
 npm install
 ```
+Update .env.example in backend to .env and add credentials
 
 ## Running
 
