@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "frontend": "vue-cli-service serve"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
@@ -30,3 +31,4 @@
     "webpack-plugin-vuetify": "^2.0.0-alpha.0"
   }
 }
+
