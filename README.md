@@ -1,25 +1,5 @@
-# Hotel Reservation System
+# Hotel Reservation System Demo
 
-## Project setup
-Go into both folders and run:
-```
-npm install
-```
-Update .env.example in backend to .env and add credentials
 
-## Running
+https://user-images.githubusercontent.com/128852758/228126636-5c7053fc-6de0-4ce6-8d19-fe89d3950fa6.mp4
 
-### Go into backend and:
-
-run both backend and frontend:
-```
-npm run dev
-```
-run just frontend:
-```
-npm run frontend
-```
-run just backend:
-```
-npm run backend
-```
