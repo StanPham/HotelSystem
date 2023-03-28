@@ -24,7 +24,7 @@ https://user-images.githubusercontent.com/128852758/228126636-5c7053fc-6de0-4ce6
 
 ![Screenshot 2023-03-28 115450](https://user-images.githubusercontent.com/128852758/228313609-01cd939f-0fe8-4d4b-ac37-1336ab399e0b.png)
 
-##Figma Screenshots
+## Figma Screenshots
 
 ![FigmaRoomSelect](https://user-images.githubusercontent.com/128852758/228314917-b22af1d3-db17-4747-998b-e38f51af479f.png)
 ![FigmaCustomerDash](https://user-images.githubusercontent.com/128852758/228315037-14046cb9-2aa4-43e3-963a-6c03cb027dcf.png)
