@@ -97,6 +97,7 @@ input[type="submit"] {
 
 
 
+
 <script>
 import NavbarComponent from '../components/NavbarComponent.vue';
 
