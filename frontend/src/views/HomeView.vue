@@ -1,4 +1,5 @@
 <template>
+  <NavbarComponent />
   <div class="home">
     <div class="header">
       <h1 class="title">Dardanelle Lake Inn</h1>
@@ -113,6 +114,7 @@
 
 
 <script>
+import NavbarComponent from '../components/NavbarComponent.vue';
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -130,6 +132,9 @@ export default defineComponent({
 
     return { handleLogin };
   },
+  components:{
+      NavbarComponent
+    }
 });
 </script>
 

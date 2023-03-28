@@ -1,4 +1,5 @@
 <template>
+  <NavbarComponent />
   <body>
     <h1>Make A Reservation</h1>
     <div class="date-inputs-container">
@@ -97,12 +98,16 @@ input[type="submit"] {
 
 
 <script>
+import NavbarComponent from '../components/NavbarComponent.vue';
 
   import { defineComponent } from 'vue';
   
   
   export default defineComponent({
   name: 'CustomerView',
+  components:{
+      NavbarComponent
+    }
   })
 </script>
 
