@@ -32,6 +32,13 @@ https://user-images.githubusercontent.com/128852758/228727435-18ad813c-b1bf-420e
 
 ![dialog](https://user-images.githubusercontent.com/128852758/228317047-431b115e-197e-423e-93e2-e4358f8e22c4.png)
 
+## Reviews
+
+![ReviewDialog](https://user-images.githubusercontent.com/128852758/228928646-a9e55add-7fa1-4b1c-9b4a-c392cbe3fe17.png)
+![ReviewForm1](https://user-images.githubusercontent.com/128852758/228928658-2ec6d000-2266-45f4-a192-25f1bce03ab5.png)
+![ReviewForm2](https://user-images.githubusercontent.com/128852758/228928668-62058c86-aa34-48e3-9f5e-e63d9d84ff42.png)
+
+
 ## Figma Screenshots
 
 ![FigmaRoomSelect](https://user-images.githubusercontent.com/128852758/228314917-b22af1d3-db17-4747-998b-e38f51af479f.png)
