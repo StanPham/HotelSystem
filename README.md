@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/128852758/228727435-18ad813c-b1bf-420e
 
 ## Calendar Example
 
-![Calendar](https://user-images.githubusercontent.com/128852758/228129789-17ecc65f-487c-4fb9-8cb6-236a2e3e1e65.png)
+![Calendar](https://user-images.githubusercontent.com/128852758/228931446-2058cec1-e870-482c-b6b3-c5e8963d6163.png)
 
 ## Login and Sign up
 
