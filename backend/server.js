@@ -2,13 +2,26 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 require('dotenv').config();
+const errorHandlerMiddleware = require('./middleware/error_handler')
+const authenticationMiddleware = require('./middleware/authentication')
 
 //const ExampleRoutes = require('./routes/Example')
+const UserRoutes = require('./routes/User')
 
 app.use(cors())
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
+
+// middleware for cookies
+app.use(cookieParser())
+
+app.use(authenticationMiddleware)
+
+// Default error handler
+app.use(errorHandlerMiddleware)
 
 mongoose
     .connect(process.env.MONGO_URI, {
@@ -24,6 +37,7 @@ app.get('/', (req, res) => {
 });
 
 //app.use('/api/Example', ExampleRoutes)
+app.use('/api/User', UserRoutes)
 
 
 app.listen(process.env.PORT, () => console.log(`App listening at http://localhost:${process.env.PORT}`))
