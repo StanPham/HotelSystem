@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 require('dotenv').config();
 
 //const ExampleRoutes = require('./routes/Example')
-
+const roomsRoutes = require('./routes/Rooms')
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 });
 
 //app.use('/api/Example', ExampleRoutes)
+app.use('/rooms', roomsRoutes)
 
 
 app.listen(process.env.PORT, () => console.log(`App listening at http://localhost:${process.env.PORT}`))
