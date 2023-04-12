@@ -65,8 +65,8 @@ router.post('/login', async (req, res) => {
     user.refresh_token = refreshToken
     await user.save()
   
-    res.cookie('refresh_token', refreshToken, {httpOnly: true, sameSite: 'None', secure: true, maxAge: 24*60*60*1000})
-    res.json({access_token: accessToken})
+    res.cookie('refresh_token', refreshToken, {httpOnly: true, sameSite: 'None', secure: true, maxAge: 24*60*60*1000})//sameSite: 'None', secure: true,
+    res.json({access_token: accessToken})                                                                             //you need to remove that part to test in Postman
 })
 
 router.post('/logout', async (req, res) => {
@@ -78,8 +78,8 @@ router.post('/logout', async (req, res) => {
     const user = await User.findOne({refresh_token: refreshToken}).exec()
   
     if(!user){
-      res.clearCookie('refresh_token', {httpOnly: true, sameSite: 'None', secure: true})
-      return res.sendStatus(204)
+      res.clearCookie('refresh_token', {httpOnly: true, sameSite: 'None', secure: true})//sameSite: 'None', secure: true
+      return res.sendStatus(204)                                                        //you need to remove that part to test in Postman
     }
   
     user.refresh_token = null
