@@ -62,14 +62,19 @@ router.get('/', async (req, res) => {
   
   
 // DELETE a specific room
-router.delete('/:id', getRoom, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    await res.room.remove()
-    res.json({ message: 'Room has been deleted' })
+    const deletedRoom = await Room.findByIdAndDelete(req.params.id)
+    if (deletedRoom) {
+      res.json({ message: 'Room has been deleted' })
+    } else {
+      res.status(404).json({ message: 'Cannot find room' })
+    }
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
 })
+
 
   
   async function getRoom(req, res, next) {

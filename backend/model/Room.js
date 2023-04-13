@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const RoomsSchema = Schema(
+const Room = Schema(
   {
     number:{
       type: Number,
@@ -43,4 +43,4 @@ const RoomsSchema = Schema(
   
 )
 
-module.exports = mongoose.model('Rooms', Room)
+module.exports = mongoose.model('Room', Room)
