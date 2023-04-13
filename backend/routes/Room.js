@@ -61,6 +61,15 @@ router.get('/', async (req, res) => {
   })
   
   
+// DELETE a specific room
+router.delete('/:id', getRoom, async (req, res) => {
+  try {
+    await res.room.remove()
+    res.json({ message: 'Room has been deleted' })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 
   
   async function getRoom(req, res, next) {
