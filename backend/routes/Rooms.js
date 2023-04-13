@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const RoomsSchema = require('../model/RoomsSchema')
+const Rooms = require('../model/RoomsSchema')
 const router = Router()
 
 
@@ -17,8 +17,23 @@ router.get('/', async (req, res) => {
     res.json(res.room)
   })
 
+  router.put('/', async (req, res) => {
+    const room = new Rooms({
+      number: req.body.number,
+      condition: req.body.condition,
+      type: req.body.type,
+      reservation: req.body.reservation
+    })
+  
+    try {
+      const newRoom = await room.save()
+      res.status(201).json(newRoom)
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+  })
 
-  router.put('/:id', getRoom, async (req, res) => {
+  router.patch('/:id', getRoom, async (req, res) => {
     if (req.body.number != null) {
       res.room.number = req.body.number
     }
@@ -60,50 +75,9 @@ router.get('/', async (req, res) => {
     res.room = room
     next()
   }
-  async function getRoom(req, res, next) {
-    let room
-    try {
-      room = await RoomsSchema.findById(req.params.id)
-      if (room == null) {
-        return res.status(404).json({ message: 'Cannot find room' })
-      }
-    } catch (err) {
-      return res.status(500).json({ message: err.message })
-    }
   
-    res.room = room
-    next()
-  }
-  async function getRoom(req, res, next) {
-    let room
-    try {
-      room = await RoomsSchema.findById(req.params.id)
-      if (room == null) {
-        return res.status(404).json({ message: 'Cannot find room' })
-      }
-    } catch (err) {
-      return res.status(500).json({ message: err.message })
-    }
-  
-    res.room = room
-    next()
-  }
    
-  router.post('/', async (req, res) => {
-    const room = new Rooms({
-      number: req.body.number,
-      condition: req.body.condition,
-      type: req.body.type,
-      reservation: req.body.reservation
-    })
   
-    try {
-      const newRoom = await room.save()
-      res.status(201).json(newRoom)
-    } catch (err) {
-      res.status(400).json({ message: err.message })
-    }
-  })
   
   
   
