@@ -43,4 +43,4 @@ const RoomsSchema = Schema(
   
 )
 
-module.exports = mongoose.model('Rooms', RoomsSchema)
+module.exports = mongoose.model('Rooms', Room)

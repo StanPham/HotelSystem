@@ -1,11 +1,11 @@
 const { Router } = require('express')
-const Rooms = require('../model/RoomsSchema')
+const Room = require('../model/Room')
 const router = Router()
 
 
 router.get('/', async (req, res) => {
     try {
-      const rooms = await Rooms.find()
+      const rooms = await Room.find()
       res.json(rooms)
     } catch (err) {
       res.status(500).json({ message: err.message })
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
   router.post('/:id', async (req, res) => {
     const id = req.params
-    const room = new Rooms({
+    const room = new Room({
       
       number: req.body.number,
       condition: req.body.condition,
@@ -66,7 +66,7 @@ router.get('/', async (req, res) => {
   async function getRoom(req, res, next) {
     let room
     try {
-      room = await Rooms.findById(req.params.id)
+      room = await Room.findById(req.params.id)
       if (room == null) {
         return res.status(404).json({ message: 'Cannot find room' })
       }
