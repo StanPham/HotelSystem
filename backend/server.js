@@ -10,6 +10,7 @@ const authenticationMiddleware = require('./middleware/authentication')
 //const ExampleRoutes = require('./routes/Example')
 const UserRoutes = require('./routes/User')
 
+const roomsRoutes = require('./routes/Room')
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -38,6 +39,7 @@ app.get('/', (req, res) => {
 
 //app.use('/api/Example', ExampleRoutes)
 app.use('/api/User', UserRoutes)
+app.use('/room', roomsRoutes)
 
 
 app.listen(process.env.PORT, () => console.log(`App listening at http://localhost:${process.env.PORT}`))
