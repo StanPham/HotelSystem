@@ -17,8 +17,10 @@ router.get('/', async (req, res) => {
     res.json(res.room)
   })
 
-  router.put('/', async (req, res) => {
+  router.post('/:id', async (req, res) => {
+    const id = req.params
     const room = new Rooms({
+      
       number: req.body.number,
       condition: req.body.condition,
       type: req.body.type,

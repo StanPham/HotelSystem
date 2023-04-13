@@ -6,23 +6,23 @@ const RoomsSchema = Schema(
   {
     number:{
       type: Number,
-      required: true
+      
     },
 
     condition:{
         type: String,
-        required: true
+        
       },
 
       type:{
         type: String,
-        required: true
+        
       },
 
 
       reservation:{
         type: String,
-        required: true
+        
       },
 
     
