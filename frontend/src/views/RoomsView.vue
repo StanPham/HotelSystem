@@ -1,9 +1,16 @@
 <template>
+  <NavbarComponent
+  
+   />
+  
   <v-data-table
     :headers="headers"
     :items="rooms"
     :sort-by="[{ key: 'roomNum', order: 'asc' }]"
-    class="elevation-1"
+    class="elevation table-border"
+   
+   
+    
   >
     <template v-slot:top>
       <v-toolbar
@@ -15,7 +22,7 @@
           inset
           vertical
         ></v-divider>
-        <v-spacer></v-spacer>
+       
         <v-dialog
           v-model="dialog"
           max-width="500px"
@@ -38,13 +45,10 @@
             <v-card-text>
               
                 
-                    <v-text-field
-                      v-model="editedItem.name"
-                      label="Room ID"
-                    ></v-text-field>
+                   
                  
                     <v-text-field
-                      v-model="editedItem.roomNum"
+                      v-model="editedItem.type"
                       label="Type"
                     ></v-text-field>
                   
@@ -58,10 +62,12 @@
                       label="Res Status"
                     ></v-text-field>
                   
-                    <v-text-field
+                    <v-select
                       v-model="editedItem.condition"
+                      
                       label="Condition"
-                    ></v-text-field>
+                      :items="['Dirty', 'Clean']"
+                    ></v-select>
                 
              
             </v-card-text>
@@ -121,46 +127,73 @@
         Reset
       </v-btn>
     </template>
-  </v-data-table>
+    <template v-slot:[`editedItem.condition`]="{ editedItem }">
+      <v-select
+        
+        v-model="editedItem.condition"
+        
+      
+        :items="['Dirty', 'Clean']"
+      
+      ></v-select>
 </template>
+  </v-data-table>
+
+</template>
+
+<style scoped>
+.v-table{
+  
+  margin-top: 50px;
+  margin-left:auto;
+  margin-right:auto;
+  max-width: 700px;
+  
+}
+.table-border {
+  border-collapse: collapse;
+  border: none;
+  border-spacing: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+</style>
 
 
 <script>
+import NavbarComponent from '../components/NavbarComponent.vue';
 export default {
   data: () => ({
     dialog: false,
     dialogDelete: false,
     headers: [
-      {
-        title: 'Room ID',
-        align: 'start',
-        sortable: false,
-        key: 'name',
-      },
-      { title: 'Type', key: 'type' },
-      { title: 'Room #', key: 'roomNum' },
-      { title: 'Reservation Status', key: 'res' },
+    { title: 'Room #', key: 'roomNum', width: '8%' },
+      { title: 'Type', key: 'type', width: '8%' },
       
-      { title: 'Condition', key: 'condition' },
+      { title: 'Reservation Status', key: 'res', width: '8%' },
       
-      { title: 'Actions', key: 'actions', sortable: false },
+      { title: 'Condition', key: 'condition', width: '10%' },
+      
+      { title: 'Actions', key: 'actions', sortable: false, width: '10%' },
     ],
     rooms: [],
     editedIndex: -1,
     editedItem: {
-      name: '',
+      
       type: '',
-      roomNum: 0,
-      res: 0,
-      condition: 0,
+      roomNum: '',
+      res: '',
+      condition: '',
+      
       
     },
     defaultItem: {
-      name: '',
+      
       type: '',
-      roomNum: 0,
-      res: 0,
-      condition: 0,
+      roomNum: '',
+      res: '',
+      condition: '',
+      
       
     },
   }),
@@ -184,37 +217,167 @@ export default {
     initialize () {
       this.rooms = [
         {
-          name: '643b1c93d2254f648e39ebf8',
-          type: 'Queen',
           roomNum: '01',
+          type: 'Queen',
+          
           res: 'yes',
-          condition: 'dirty',
+          condition: "Dirty",
           
         },
         {
-          name: '643b1c93d2254f648e39ebf8',
-          type: 'Queen',
           roomNum: '01',
+          type: 'Queen',
+          
           res: 'yes',
-          condition: 'dirty',
+          condition: "Dirty",
           
         },
         {
-          name: '643b1c93d2254f648e39ebf8',
-          type: 'Queen',
           roomNum: '01',
+          type: 'Queen',
+          
           res: 'yes',
-          condition: 'dirty',
+          condition: "Dirty",
           
         },
         {
-          name: '643b1c93d2254f648e39ebf8',
-          type: 'Queen',
           roomNum: '01',
+          type: 'Queen',
+          
           res: 'yes',
-          condition: 'dirty',
+          condition: "Dirty",
           
         },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        {
+          roomNum: '01',
+          type: 'Queen',
+          
+          res: 'yes',
+          condition: "Dirty",
+          
+        },
+        
+       
        
         
         
@@ -257,5 +420,8 @@ export default {
       this.close()
     },
   },
+  components:{
+      NavbarComponent
+    }
 }
 </script>

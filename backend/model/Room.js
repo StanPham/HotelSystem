@@ -8,22 +8,24 @@ const Room = Schema(
       type: Number,
       
     },
+    type:{
+      type: String,
+      
+    },
 
+    reservation:{
+      type: String,
+      
+    },
     condition:{
         type: String,
         
       },
 
-      type:{
-        type: String,
-        
-      },
+      
 
 
-      reservation:{
-        type: String,
-        
-      },
+      
 
     
 

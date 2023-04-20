@@ -4,7 +4,9 @@ import TestView from '../views/TestView.vue'
 import RoomsView from '../views/RoomsView.vue'
 
 
+
 const routes = [
+ 
   {
     path: '/',
     name: 'home',
@@ -28,3 +30,4 @@ const router = createRouter({
 })
 
 export default router
+

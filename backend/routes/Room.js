@@ -17,14 +17,16 @@ router.get('/', async (req, res) => {
     res.json(res.room)
   })
 
-  router.post('/:id', async (req, res) => {
-    const id = req.params
+  router.post('/', async (req, res) => {
+    
     const room = new Room({
       
       number: req.body.number,
-      condition: req.body.condition,
       type: req.body.type,
-      reservation: req.body.reservation
+      reservation: req.body.reservation,
+      condition: req.body.condition,
+      
+      
     })
   
     try {
