@@ -102,15 +102,19 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <v-dialog v-model="dialogDelete" max-width="500px">
-          <v-card>
-            <v-card-title class="text-h5">Are you sure you want to delete this room?</v-card-title>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="blue-darken-1" variant="text" @click="closeDelete">Cancel</v-btn>
-              <v-btn color="blue-darken-1" variant="text" @click="deleteItemConfirm">OK</v-btn>
-              <v-spacer></v-spacer>
-            </v-card-actions>
+        <v-dialog v-model="dialogDelete" max-width="220px">
+          <v-card class="card-border" title="Delete Room?" min-height="140px">
+            
+            <v-divider></v-divider>
+            <v-card-text></v-card-text>
+            
+              
+              <div class="pa-4 text-begin d-flex justify-space-between">
+              <v-btn color="blue-darken-1" min-width="92" variant="text" @click="closeDelete">Cancel</v-btn>
+              <v-btn color="blue-darken-1" mid-width="92" variant="text" @click="deleteItemConfirm">OK</v-btn>
+            </div>
+              
+            
           </v-card>
         </v-dialog>
       </v-toolbar>
@@ -172,6 +176,12 @@
 }
 
 
+.card-border{
+  border-collapse: collapse;
+  border: none;
+  border-spacing: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
 </style>
 
 
