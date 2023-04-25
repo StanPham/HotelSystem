@@ -2,26 +2,37 @@
   <NavbarComponent
   
    />
-  
+   
+   <div class="container">
   <v-data-table
     :headers="headers"
     :items="rooms"
     :sort-by="[{ key: 'roomNum', order: 'asc' }]"
-    class="elevation table-border"
+    :search="search"
+    class="elevation my-table table-border"
    
    
     
   >
+  
     <template v-slot:top>
       <v-toolbar
         flat
       >
+      
         <v-toolbar-title>Room Management</v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
           vertical
         ></v-divider>
+        <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
        
         <v-dialog
           v-model="dialog"
@@ -66,7 +77,7 @@
                       v-model="editedItem.condition"
                       
                       label="Condition"
-                      :items="['Dirty', 'Clean']"
+                      :items="['Dirty', 'Ready','Occupied','Maintenence']"
                     ></v-select>
                 
              
@@ -119,14 +130,7 @@
         mdi-delete
       </v-icon>
     </template>
-    <template v-slot:no-data>
-      <v-btn
-        color="primary"
-        @click="initialize"
-      >
-        Reset
-      </v-btn>
-    </template>
+    
     <template v-slot:[`editedItem.condition`]="{ editedItem }">
       <v-select
         
@@ -138,16 +142,19 @@
       ></v-select>
 </template>
   </v-data-table>
-
+  
+</div>
 </template>
+
 
 <style scoped>
 .v-table{
   
-  margin-top: 50px;
+  margin-top: 40px;
   margin-left:auto;
   margin-right:auto;
-  max-width: 700px;
+  max-width: 800px;
+  
   
 }
 .table-border {
@@ -157,6 +164,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.container {
+  background-color: rgb(237, 240, 233);
+  
+  background-size: cover;
+  padding:20px;
+}
+
+
 </style>
 
 
@@ -164,10 +179,11 @@
 import NavbarComponent from '../components/NavbarComponent.vue';
 export default {
   data: () => ({
+    search: '',
     dialog: false,
     dialogDelete: false,
     headers: [
-    { title: 'Room #', key: 'roomNum', width: '8%' },
+    { title: 'Room #', key: 'roomNum', width: '10%' },
       { title: 'Type', key: 'type', width: '8%' },
       
       { title: 'Reservation Status', key: 'res', width: '8%' },
@@ -217,165 +233,350 @@ export default {
     initialize () {
       this.rooms = [
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '1001',
+          type: 'DQ',
           
-          res: 'yes',
+          res: '4/27-4/29',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1002',
+          type: 'DQ',
+          
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1003',
+          type: 'DQ',
+          
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1004',
+          type: 'K',
+          
+          res: '4/27-5/2',
+          condition: "Occupied",
+          
+        },
+        
+
+
+        {
+          roomNum: '1005',
+          type: 'DQ',
+          
+          res: '4/28-4/29',
+          condition: "Ready",
+          
+        },
+        {
+          roomNum: '1006',
+          type: 'DQ',
+          
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1007',
+          type: 'DQ',
+          
+          res: '4/29-5/5',
+          condition: "Ready",
+          
+        },
+        {
+          roomNum: '1008',
+          type: 'K',
+          
+          res: '4/27-4/28',
+          condition: "Dirty",
+          
+        },
+
+
+        {
+          roomNum: '1009',
+          type: 'DQ',
+          
+          res: '4/27-4/28',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1010',
+          type: 'DQ',
+          
+          res: '5/27-5/30',
+          condition: "Maintenence",
+          
+        },
+        {
+          roomNum: '1011',
+          type: 'DQ',
+          
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1012',
+          type: 'K',
+          
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+
+
+        {
+          roomNum: '1013',
+          type: 'DQ',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1014',
+          type: 'DQ',
+          
+          res: '4/27-4/28',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '1015',
+          type: 'DQ',
+          
+          res: '4/27-4/28',
           condition: "Dirty",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '1016',
+          type: 'K',
           
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-5/1',
+          condition: "Occupied",
+          
+        },
+
+
+        {
+          roomNum: '1017',
+          type: 'DQ',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '1018',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '1019',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '1020',
+          type: 'K',
           
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+
+
+        {
+          roomNum: '2001',
+          type: 'DQ',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2002',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2003',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2004',
+          type: 'K',
           
-          res: 'yes',
+          res: '4/27-4/28',
           condition: "Dirty",
+          
+        },
+
+
+        {
+          roomNum: '2005',
+          type: 'DQ',
+          
+          res: '6/3-6/8',
+          condition: "Maintenence",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2006',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2007',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/28',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2008',
+          type: 'K',
           
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/28-4/30',
+          condition: "Ready",
+          
+        },
+
+
+        {
+          roomNum: '2009',
+          type: 'DQ',
+          
+          res: '4/29-4/30',
+          condition: "Ready",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2010',
+          type: 'DQ',
           
-          res: 'yes',
-          condition: "Dirty",
-          
-        },
-        {
-          roomNum: '01',
-          type: 'Queen',
-          
-          res: 'yes',
-          condition: "Dirty",
+          res: '4/27-4/30',
+          condition: "Occupied",
           
         },
         {
-          roomNum: '01',
-          type: 'Queen',
+          roomNum: '2011',
+          type: 'DQ',
           
-          res: 'yes',
+          res: '4/27-4/28',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2012',
+          type: 'K',
+          
+          res: '4/27-4/30',
           condition: "Dirty",
           
         },
+
+
+        {
+          roomNum: '2013',
+          type: 'DQ',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2014',
+          type: 'DQ',
+          
+          res: '4/27-5/2',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2015',
+          type: 'DQ',
+          
+          res: '4/27-4/30',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2016',
+          type: 'K',
+          
+          res: '4/28-4/30',
+          condition: "Ready",
+          
+        },
+
+
+        {
+          roomNum: '2017',
+          type: 'DQ',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2018',
+          type: 'DQ',
+          
+          res: '4/27-4/28',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2019',
+          type: 'DQ',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
+          
+        },
+        {
+          roomNum: '2020',
+          type: 'K',
+          
+          res: '4/27-4/29',
+          condition: "Occupied",
+          
+        },
+
+
+       
+
+      
+        
         
        
        
