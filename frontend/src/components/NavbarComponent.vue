@@ -7,8 +7,7 @@
     <v-spacer></v-spacer>
     <v-btn
       flat 
-      href="http://www.google.com"
-      target="_blank"
+      :to="{ name: 'signup'}"
     >
       <span> Sign Up! </span>
     </v-btn>

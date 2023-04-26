@@ -1,22 +1,46 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import TestView from '../views/TestView.vue'
+import CustomerView from '../views/CustomerView.vue'
+import ReservationView from '../views/ReservationView.vue'
+import CreateresView from '../views/CreateresView.vue'
+import RoomsView from '../views/RoomsView.vue'
+import SignupView from '../views/SignupView.vue'
+import SigninView from '../views/SigninView.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/room',
+    name: 'room',
+    component: RoomsView
   },
   {
-    path: '/test',
-    name: 'test',
-    component: TestView
+    path: '/',
+    name: 'home',
+    component: SigninView
+  },
+  {
+    path: '/customer',
+    name: 'customer',
+    component: CustomerView
+  },
+  {
+    path: '/create',
+    name: 'create',
+    component: CreateresView
+  },
+  {
+    path: '/reservation',
+    name: 'reservation',
+    component: ReservationView
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignupView
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 
