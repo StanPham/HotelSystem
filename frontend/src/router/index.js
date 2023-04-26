@@ -5,6 +5,8 @@ import CreateresView from '../views/CreateresView.vue'
 import RoomsView from '../views/RoomsView.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
+import ReviewView from '../views/ReviewView.vue'
+import CustomeroutView from '../views/CustomeroutView.vue'
 
 const routes = [
   {
@@ -23,6 +25,11 @@ const routes = [
     component: CustomerView
   },
   {
+    path: '/customerout',
+    name: 'customerout',
+    component: CustomeroutView
+  },
+  {
     path: '/create',
     name: 'create',
     component: CreateresView
@@ -36,6 +43,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignupView
+  },
+  {
+    path: '/review',
+    name: 'review',
+    component: ReviewView
   }
 ]
 

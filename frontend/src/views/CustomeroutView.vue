@@ -3,12 +3,12 @@
   <div id="container">
   <v-card
     
-    max-width="70%"
+    max-width="50%"
   >
     <v-card-text>
       <p class="text-h2 text--primary">
         
-        You're Ready to Check In!
+        You're Ready to Check Out!
       </p>
       <p style="margin-top: 10px;font-size:2em; margin-bottom: 10px;text-decoration: underline solid #000;">Rooms</p>
       <div style="font-size:1.5em;" class="text--primary">
@@ -18,20 +18,40 @@
       </div>
     </v-card-text>
     <v-card-actions>
-      <v-btn
-        variant="text"
-        color="teal-accent-4"
-        @click="reveal = true"
-      >
-      <v-icon
+      <v-dialog
+      v-model="dialog"
+      width="auto"
+    >
+      <template v-slot:activator="{ props }">
+        <v-btn
+          color="red"
+          v-bind="props"
+        >
+        <v-icon
           start
-          icon="mdi-map-marker-check"
+          icon="mdi-close"
         ></v-icon>
-        Check-In
-      </v-btn>
+        Check Out
+        </v-btn>
+      </template>
+
+      <v-card>
+        <v-card-text>
+          <p>
+            Are You Sure You Want To Check Out?
+          </p>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="red" @click="dialog = false">No</v-btn>
+          <v-btn color="teal-accent-4" @click="dialog = false;reveal = true">Yes</v-btn>
+          
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     </v-card-actions>
 
     <v-expand-transition>
+      
       <v-card
         v-if="reveal"
         class="v-card--reveal"
@@ -39,42 +59,24 @@
       >
         <v-card-text class="pb-0">
           <p class="text-h4 text--primary">
-            You are Checked In!
+            You are Checked Out!
+          </p>
+          <p class="text-h5">
+            Tell us how we did!
           </p>
           
         </v-card-text>
         <v-card-actions>
-          <v-dialog
-      v-model="dialog"
-      width="auto"
-    >
-      <template v-slot:activator="{ props }">
-        <v-btn
-          color="primary"
-          v-bind="props"
+          <v-btn
+          color="teal"
+          :to="{name :'review'}"
         >
         <v-icon
           start
           icon="mdi-eye"
         ></v-icon>
-          Reveal QR Code
+          Leave A Review
         </v-btn>
-      </template>
-
-      <v-card>
-        <v-card-text>
-          <v-img
-            :width="500"
-            aspect-ratio="1"
-            cover
-            src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Rickrolling_QR_code.png"
-          ></v-img>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" block @click="dialog = false">Hide QR Code</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
         </v-card-actions>
       </v-card>
     </v-expand-transition>
@@ -82,20 +84,20 @@
 
   <v-card
   class="Res"
-  max-width="70%"
   >
     <v-card-text>
       <p class="text-h2">
       Make A Reservation:
       </p>
-      <form>
+      <v-form
+      style="margin-top:30px">
       <label for="checkin" class="text-h4" style="text-decoration: underline solid #000;">Check-in Date:</label>
-          <input type="date" id="checkin" name="checkin" class="text-h5" required>
+          <input type="date" id="checkin" name="checkin" class="text-h4" required>
 
           <label for="checkout" class="text-h4" style="text-decoration: underline solid #000;">Check-out  Date:</label>
-          <input type="date" id="checkout" name="checkout" class="text-h5" required>
-      <v-btn size="x-large" :to="{ name: 'create'}"><v-icon start icon="mdi-magnify"></v-icon> Search</v-btn>
-      </form>
+          <input type="date" id="checkout" name="checkout" class="text-h4" required>
+      <v-btn icon="mdi-magnify" size="large" :to="{ name: 'create'}" type="submit"></v-btn>
+    </v-form>
     </v-card-text>
   </v-card>
   <v-sheet
@@ -116,7 +118,7 @@
         May 30, 2023 - June 12, 2023
       </p>
       <p style="margin-top: 10px;font-size:2em; margin-bottom: 10px;text-decoration: underline solid #000;">Rooms</p>
-      <div style="font-size:1.2em;" class="text--primary">
+      <div style="font-size:1.5em;" class="text--primary">
         #1013<br>
         #2015<br>
         #2023
@@ -210,9 +212,13 @@
 
 <style>
 input[type="date"] {
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid gray;
   width: 20%;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 #upcomming{
   margin-top: 30px;

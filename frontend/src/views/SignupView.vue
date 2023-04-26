@@ -32,7 +32,7 @@
             <label for="phonenumber">Phone Number:</label>
             <input type="text" v-model="phonenumber" id="phonenumber" name="phonenumber" required>
             <br>
-            <label for="creditcardnumber">Credit Card Number:</label>
+            <label for="creditcardnumber">Email:</label>
             <input type="text" v-model="creditcardnumber" id="creditcardnumber" name="creditcardnumber" required>
           </div>
         </div>
