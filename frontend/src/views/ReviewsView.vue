@@ -9,13 +9,17 @@
           <input type="text" id="name" v-model="review.name" required>
           <br>
           <label for="rating">Rating:</label>
-          <select id="rating" v-model="review.rating" required>
-            <option value="5">5 stars</option>
-            <option value="4">4 stars</option>
-            <option value="3">3 stars</option>
-            <option value="2">2 stars</option>
-            <option value="1">1 star</option>
-          </select>
+          <div class="interactive-stars">
+            <label v-for="n in 5" :key="n"
+            :class="{'filled': review.rating >= n, 'inactive': review.rating <= n}"
+                  @click="review.rating = n">
+              ★
+            </label>
+          </div>
+
+
+
+
           <br>
           <label for="comment">Comment:</label>
           <textarea id="comment" v-model="review.comment"></textarea>
@@ -33,11 +37,16 @@
     <div class="reviews-row" v-for="(row, index) in reviews" :key="index">
       <div class="review" v-for="(review, index) in row" :key="index">
         <h3>{{ review.name }}</h3>
-        <div>Rating: {{ review.rating }}/5</div>
+        <div class="stars">
+          <label v-for="n in 5" :key="n" :class="n <= review.rating ? 'filled' : ''">
+            ★
+          </label>
+        </div>
         <div>{{ review.comment }}</div>
       </div>
     </div>
   </div>
+
 </template>
 
 <style>
@@ -124,13 +133,17 @@ select#rating {
   border-radius: 5px;
   border: 1.5px solid black;
   font-size: 16px;
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10.586L4.707 7.293C4.316 6.902 3.684 6.902 3.293 7.293C2.902 7.684 2.902 8.316 3.293 8.707L7.293 12.707C7.488 12.902 7.744 13 8 13C8.256 13 8.512 12.902 8.707 12.707L12.707 8.707C13.098 8.316 13.098 7.684 12.707 7.293C12.316 6.902 11.684 6.902 11.293 7.293L8 10.586Z' fill='%23008CBA'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23f7c223' d='M8 0l2.43 4.958 5.417.788-3.92 3.805.925 5.385L8 12.848l-4.852 2.538.925-5.385L0.153 5.746l5.417-.788L8 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
-  background-size: 12px;
+  background-size: 14px;
   color: #333;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
+}
+
+select#rating option {
+  font-size: 16px;
 }
 select#rating:hover, select#rating:focus {
   border-color: #32abd4;
@@ -194,6 +207,49 @@ textarea#comment {
 .review div {
   margin-bottom: 10px;
 }
+
+.interactive-stars label {
+  font-size: 24px; /* adjust size as desired */
+  cursor: pointer;
+  color: #ccc; /* set to desired color */
+}
+
+.interactive-stars .filled {
+  color: #ffd700; /* set to desired color */
+}
+
+.interactive-stars label:hover,
+.interactive-stars label:hover ~ label {
+  transition: all 0.2s;
+}
+
+.interactive-stars label.filled {
+  transition: all 0.5s;
+}
+
+
+
+.interactive-stars label:hover ~ label {
+  color: #ccc;
+}
+
+.interactive-stars label:hover:before {
+  content: "★";
+  position: absolute;
+  left: -1em;
+  color: #FFD700;
+}
+
+.stars label {
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.stars label.filled {
+  color: #F0D10C;
+} 
+
 </style>
 
 <script>
@@ -203,9 +259,10 @@ export default {
       showForm: false,
       review: {
         name: '',
-        rating: '5',
+        rating: 5,
         comment: '',
       },
+      hoverRating: 0,
       reviews: [
         [
           { name: 'John', rating: 5, comment: 'Great product!' },
@@ -220,16 +277,25 @@ export default {
       ]  
     }
   },
-  methods: {
-    showReviewForm() {
-      this.showForm = true;
-    },
-    closeReviewForm() {
+    methods: {
+      showReviewForm() {
+        this.showForm = true;
+      },
+      closeReviewForm() {
+        this.showForm = false;
+      },
+      submitReview() {
+      // code to submit review
+      let stars = "";
+      for (let i = 0; i < this.review.rating; i++) {
+        stars += "★";
+      }
+      console.log(`Stars: ${stars}`); // Use the stars variable
+      this.reviews.push(this.review);
+      this.review = { name: "", rating: "", comment: "" };
       this.showForm = false;
     },
-    submitReview() {
-      // submit review logic here
-    }
+
   }
 }
 </script>
