@@ -10,8 +10,13 @@
 
     <v-btn 
     variant="flat"
+    elevation="15"
     color="green"
-    @click="createdialog = !createdialog">
+    
+   
+  
+  
+    @click="dialog = !dialog">
       Confirm Reservation
       
     </v-btn>
@@ -19,13 +24,13 @@
 </v-toolbar>
 
 
-<v-create
-      v-model="createdialog"
+<v-dialog
+      v-model="dialog"
       
     >
 <v-fade-transition hide-on-leave>
 <v-card
-        v-if="createdialog"
+        v-if="dialog"
         append-icon="$close"
         class="mx-auto"
         elevation="16"
@@ -39,7 +44,7 @@
 
 
       <template v-slot:append>
-          <v-btn icon="$close" variant="text" @click="createdialog = false"></v-btn>
+          <v-btn icon="$close" variant="text" @click="dialog = false"></v-btn>
         </template>
 
         <v-divider></v-divider>
@@ -73,7 +78,7 @@
             min-width="92"
             rounded
             variant="outlined"
-            @click="createdialog = false"
+            @click="dialog = false"
           >
             Cancel
           </v-btn>
@@ -83,9 +88,7 @@
             min-width="92"
             rounded
             variant="outlined"
-            @click="createdialog = false"
-            :to="{ name: 'checkin'}"
-
+            @click="dialog = false"
           >
             Yes
           </v-btn>
@@ -103,7 +106,7 @@
 </v-card>
 
 </v-fade-transition>
-</v-create>
+</v-dialog>
 
 
     
@@ -211,11 +214,11 @@ import NavbarComponent from '../components/NavbarComponent.vue';
 
   export default {
     data: () => ({
-      createdialog: false,
+      dialog: false,
       date: new Date().toISOString().substr(0, 10),
-      createmenu: false,
+      menu: false,
       modal: false,
-      createmenu2: false,
+      menu2: false,
       items: [
         {
           title: 'Free WiFi',
