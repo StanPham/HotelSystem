@@ -85,6 +85,7 @@
           <v-btn
             class="text-none"
             color="green"
+            :to="{ name: 'customer'}"
             min-width="92"
             rounded
             variant="outlined"
